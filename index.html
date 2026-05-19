@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniPath | University Pathway Advisor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <img src="assets/pathway-hero.png" alt="" class="hero__image" />
+      <div class="hero__shade"></div>
+      <nav class="topbar" aria-label="Primary navigation">
+        <a class="brand" href="#advisor" aria-label="UniPath home">
+          <span class="brand__mark">U</span>
+          <span>UniPath</span>
+        </a>
+        <div class="topbar__links">
+          <a href="#advisor">Advisor</a>
+          <a href="#compare">Compare</a>
+          <a href="#saved">Saved</a>
+        </div>
+      </nav>
+      <section class="hero__content">
+        <p class="eyebrow">AI university and pathway advisor</p>
+        <h1>Plan your next study move with clearer options.</h1>
+        <p>
+          Enter an ATAR or choose the no-ATAR pathway. UniPath recommends degree options,
+          backups, pathway programs, career outcomes, and official course links in simple language.
+        </p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="#advisor">Start advising</a>
+          <a class="button button--ghost" href="#timeline">Plan timeline</a>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="shell" id="advisor">
+        <aside class="panel intake" aria-labelledby="advisor-title">
+          <div class="section-heading">
+            <p class="eyebrow">Student profile</p>
+            <h2 id="advisor-title">Build a recommendation</h2>
+          </div>
+
+          <div class="segmented" role="tablist" aria-label="ATAR status">
+            <button class="segmented__button is-active" type="button" data-mode="atar">I have an ATAR</button>
+            <button class="segmented__button" type="button" data-mode="noatar">I do not have an ATAR</button>
+          </div>
+
+          <form id="advisorForm" class="form">
+            <div class="form__group" data-section="atar">
+              <label for="atarScore">ATAR score</label>
+              <input id="atarScore" name="atarScore" type="number" min="0" max="99.95" step="0.05" value="68" />
+            </div>
+
+            <div class="form__grid" data-section="noatar" hidden>
+              <div class="form__group">
+                <label for="education">Highest education completed</label>
+                <select id="education" name="education">
+                  <option>Year 12 completed</option>
+                  <option>Certificate III or IV</option>
+                  <option>Diploma</option>
+                  <option>Some university study</option>
+                  <option>International secondary study</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label for="experience">Relevant work experience</label>
+                <select id="experience" name="experience">
+                  <option>None yet</option>
+                  <option>1-2 years</option>
+                  <option>3+ years</option>
+                  <option>Industry portfolio or certifications</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label for="ageStatus">Age / status</label>
+                <select id="ageStatus" name="ageStatus">
+                  <option>School leaver</option>
+                  <option>Mature-age applicant</option>
+                  <option>International applicant</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label for="english">English level</label>
+                <select id="english" name="english">
+                  <option>Not applicable / local student</option>
+                  <option>IELTS 6.5 or similar</option>
+                  <option>Need English pathway</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form__grid">
+              <div class="form__group">
+                <label for="field">Preferred field</label>
+                <select id="field" name="field">
+                  <option>Cyber Security</option>
+                  <option>Accounting</option>
+                  <option>Architecture</option>
+                  <option>Arts</option>
+                  <option>Biomedical Science</option>
+                  <option>Data Science</option>
+                  <option>Design</option>
+                  <option>Education</option>
+                  <option>Health Science</option>
+                  <option>Information Technology</option>
+                  <option>Law</option>
+                  <option>Media and Communication</option>
+                  <option>Medicine</option>
+                  <option>Nursing</option>
+                  <option>Psychology</option>
+                  <option>Science</option>
+                  <option>Social Work</option>
+                  <option>Business</option>
+                  <option>Engineering</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label for="location">Location</label>
+                <select id="location" name="location">
+                  <option>Melbourne</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label for="level">Study level</label>
+                <select id="level" name="level">
+                  <option>Bachelor degree</option>
+                  <option>Diploma pathway</option>
+                  <option>Associate degree</option>
+                  <option>Foundation studies</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label for="preference">Preference</label>
+                <select id="preference" name="preference">
+                  <option>Practical course</option>
+                  <option>Cheaper</option>
+                  <option>Closer</option>
+                  <option>Higher ranking</option>
+                  <option>Online flexibility</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="button button--primary form__submit" type="submit">Find my pathway</button>
+          </form>
+        </aside>
+
+        <section class="results" aria-live="polite">
+          <div class="results__header">
+            <div>
+              <p class="eyebrow">Recommendation</p>
+              <h2 id="resultTitle">Your Cyber Security options in Melbourne</h2>
+            </div>
+            <span class="status-pill" id="confidencePill">ATAR mode</span>
+          </div>
+
+          <div class="spotlight" id="spotlight"></div>
+
+          <div class="recommendation-grid" id="recommendationGrid"></div>
+        </section>
+      </section>
+
+      <section class="comparison" id="compare">
+        <div class="section-heading">
+          <p class="eyebrow">University comparison</p>
+          <h2>Compare recommended options</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Course</th>
+                <th>University</th>
+                <th>Fit</th>
+                <th>Location</th>
+                <th>Duration</th>
+                <th>Official page</th>
+              </tr>
+            </thead>
+            <tbody id="comparisonRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="assistant-panel">
+          <div class="section-heading">
+            <p class="eyebrow">Simple-language chatbot</p>
+            <h2>Ask UniPath</h2>
+          </div>
+          <div class="chat" id="chatLog">
+            <div class="chat__bubble chat__bubble--ai">
+              Ask a question like “What is my safest backup?” or “Explain diploma to bachelor.”
+            </div>
+          </div>
+          <form class="chat__form" id="chatForm">
+            <input id="chatInput" type="text" placeholder="Ask a follow-up question" />
+            <button class="icon-button" type="submit" aria-label="Send question">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 2 11 13"></path>
+                <path d="m22 2-7 20-4-9-9-4 20-7Z"></path>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <div class="saved-panel" id="saved">
+          <div class="section-heading">
+            <p class="eyebrow">Saved options</p>
+            <h2>Your shortlist</h2>
+          </div>
+          <div id="savedList" class="saved-list"></div>
+        </div>
+      </section>
+
+      <section class="timeline" id="timeline">
+        <div class="section-heading">
+          <p class="eyebrow">Plan my pathway</p>
+          <h2>Timeline from today to enrolment</h2>
+        </div>
+        <div class="timeline__track" id="timelineTrack"></div>
+      </section>
+
+      <section class="notice">
+        <strong>Prototype note:</strong> ATAR ranges, fees, and eligibility in this demo are indicative
+        examples for product design. Always confirm current requirements on the official university page.
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
